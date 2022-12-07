@@ -8,15 +8,15 @@ function findBookById(books, id) {
 
 function partitionBooksByBorrowedStatus(books) {
 
-  let r = [];
-  let b = [];
+  let ret = [];
+  let bor = [];
 
   for(let key in books){
     const { borrows: [ { returned } ]} = books[key];
-    returned ? r.push(books[key]) : b.push(books[key]);
+    returned ? ret.push(books[key]) : bor.push(books[key]);
   }
 
-  return [[...b], [...r]]
+  return [[...bor], [...ret]]
 }
 
 function getBorrowersForBook(book, accounts) {
